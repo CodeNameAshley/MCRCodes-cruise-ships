@@ -1,8 +1,14 @@
-const startPoint = "Dover";
+//const startPoint = "Dover";
 
 class Ship {
-  constructor() {
-    this.startingPort = startPoint;
+  constructor(startPoint) {
+    this.currentPort = startPoint;
+  }
+  setSail() {
+    return (this.currentPort = null);
+  }
+  dock(port) {
+    this.currentPort = port;
   }
 }
 
