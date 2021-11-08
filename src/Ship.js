@@ -2,9 +2,12 @@
 
 class Ship {
   constructor(itinerary) {
+    // this is basically the name of the ship
     this.itinerary = itinerary;
     this.currentPort = itinerary.ports[0];
     this.previousPort = null;
+    this.currentPort.addShip(this);
+    //this.currentPort.removeShip(this);
   }
   setSail() {
     //return (this.currentPort = null);
@@ -16,13 +19,15 @@ class Ship {
     }
 
     this.previousPort = this.currentPort;
+    this.currentPort.removeShip(this);
     this.currentPort = null;
   }
-  dock(port) {
+  dock() {
     const itinerary = this.itinerary;
     const previousPortIndex = itinerary.ports.indexOf(this.previousPort);
 
     this.currentPort = itinerary.ports[previousPortIndex + 1];
+    this.currentPort.addShip(this);
   }
 }
 
