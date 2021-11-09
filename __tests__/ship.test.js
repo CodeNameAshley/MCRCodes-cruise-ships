@@ -3,27 +3,39 @@ const Port = require("../src/Port.js");
 const Itinerary = require("../src/Itinerary.js");
 
 describe("Ship", () => {
+  let port;
+  let itinerary;
+  let ship;
+  let calais;
+
+  beforeEach(() => {
+    dover = new Port("Dover");
+    itinerary = new Itinerary([dover, calais]);
+    ship = new Ship(itinerary);
+    calais = new Port("Calais");
+  });
+
   it("can be instantiated", () => {
-    const port = new Port("Dover");
-    const itinerary = new Itinerary([port]);
-    const ship = new Ship(itinerary);
+    // const port = new Port("Dover");
+    // const itinerary = new Itinerary([port]);
+    // const ship = new Ship(itinerary);
 
     expect(ship).toBeInstanceOf(Object);
   });
 
   it("has a starting port", () => {
-    const port = new Port("Dover");
-    const itinerary = new Itinerary([port]);
-    const ship = new Ship(itinerary);
+    port = new Port("Dover");
+    itinerary = new Itinerary([port]);
+    ship = new Ship(itinerary);
 
     expect(ship.currentPort).toBe(port);
   });
 
   it("can set sail", () => {
-    const dover = new Port("Dover");
-    const calais = new Port("Calais");
-    const itinerary = new Itinerary([dover, calais]);
-    const ship = new Ship(itinerary);
+    // const dover = new Port("Dover");
+    // const calais = new Port("Calais");
+    //const itinerary = new Itinerary([dover, calais]);
+    // const ship = new Ship(itinerary);
 
     ship.setSail();
 
@@ -33,10 +45,10 @@ describe("Ship", () => {
   });
 
   it("can dock at a different port", () => {
-    const dover = new Port("Dover");
-    const calais = new Port("Calais");
-    const itinerary = new Itinerary([dover, calais]);
-    const ship = new Ship(itinerary);
+    dover = new Port("Dover");
+    calais = new Port("Calais");
+    itinerary = new Itinerary([dover, calais]);
+    ship = new Ship(itinerary);
 
     ship.setSail();
     ship.dock();
@@ -46,10 +58,10 @@ describe("Ship", () => {
   });
 
   it("it can't sail further than its itinerary", () => {
-    const dover = new Port("Dover");
-    const calais = new Port("Calais");
-    const itinerary = new Itinerary([dover, calais]);
-    const ship = new Ship(itinerary);
+    // const dover = new Port("Dover");
+    // const calais = new Port("Calais");
+    //const itinerary = new Itinerary([dover, calais]);
+    // const ship = new Ship(itinerary);
 
     ship.setSail();
     ship.dock();
@@ -58,9 +70,9 @@ describe("Ship", () => {
   });
 
   it("gets added to port on instantiation", () => {
-    const dover = new Port("Dover");
-    const itinerary = new Itinerary([dover]);
-    const ship = new Ship(itinerary);
+    // const dover = new Port("Dover");
+    //const itinerary = new Itinerary([dover]);
+    // const ship = new Ship(itinerary);
 
     expect(dover.ships).toContain(ship);
   });
