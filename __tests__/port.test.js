@@ -7,12 +7,16 @@ describe("Port", () => {
 
   beforeEach(() => {
     port = new Port("Dover");
-    jollyRoger = {};
-    flyingDutchman = {};
+    jollyRoger = jest.fn();
+    flyingDutchman = jest.fn();
   });
 
   it("can be instantiated", () => {
     expect(new Port()).toBeInstanceOf(Object);
+  });
+
+  it("can have a name", () => {
+    expect(port.name).toEqual("Dover");
   });
 
   it("can add a ship", () => {
@@ -20,8 +24,8 @@ describe("Port", () => {
     // const jollyRoger = {};
     // const flyingDutchman = {};
 
-    jollyRoger = {};
-    flyingDutchman = {};
+    // jollyRoger = {};
+    // flyingDutchman = {};
 
     expect(port.ships).toEqual([]);
 
